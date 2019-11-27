@@ -4,6 +4,8 @@ const app = express()
 const bodyParser = require('body-parser')
 app.use(bodyParser.json())
 
+app.use(express.static('build'))
+
 var morgan = require('morgan')
 morgan.token('info', function (req, res) { return JSON.stringify(req.body) })
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms :info'))
